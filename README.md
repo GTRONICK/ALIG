@@ -176,7 +176,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         en_US.UTF-8 UTF-8
 
-  *Guardar presionando Ctrl + X,luego Y y finalmente ENTER*
+  *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
         
 33. Construir el soporte de idioma con: 
 
