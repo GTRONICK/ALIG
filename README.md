@@ -25,7 +25,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         ls /sys/firmware/efi/efivars
 
-  *Si se muestra contenido en la carpeta efivars, quiere decir que arrancamos el sistema correctamente en modo UEFI.*
+    *Si se muestra contenido en la carpeta efivars, quiere decir que arrancamos el sistema correctamente en modo UEFI.*
 
 
 6. Verificar conexión a internet haciendo ping a: archlinux.org (o cualquier otra página o IP)
@@ -38,7 +38,7 @@ El presente documento no pretende ser una guía completa para la instalación de
         ip link (Para listar las interfaces. Ubicar la de Wifi, generalmente es wlp2s0)
         wifi-menu -o wlp2s0
 
- *Seleccionar la red, e ingresar contraseña.*
+    *Seleccionar la red, e ingresar contraseña.*
 
 8. Actualizar el reloj del sistema: 
 
