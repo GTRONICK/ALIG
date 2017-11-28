@@ -46,10 +46,6 @@ Si se muestra contenido en la carpeta efivars, quiere decir que arrancamos el si
         Seleccionar la red, e ingresar contraseña.
 
 
-
-
-
-
 8. Actualizar el reloj del sistema: 
 
 
@@ -98,20 +94,6 @@ gdisk /dev/sda
         (Escribir EF00 cuando se pida código de partición y luego ENTER)
         w (Para escribir los cambios y luego ENTER)
         y (Para aceptar los cambios y luego ENTER)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 14. Crear particion swap con:
@@ -166,8 +148,6 @@ lsblk
 
 
         mkswap /dev/sda2
-
-
 
 
 20. Activar swap con:
