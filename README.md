@@ -3,7 +3,7 @@
 **GTRONICK**  
 Jaime Quiroga 
  
-Editado por última vez: **28/11/2017**
+Editado por última vez: **05/12/2017**
 
 # INSTALACIÓN DE ARCHLINUX CON SOPORTE UEFI #
 
