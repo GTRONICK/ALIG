@@ -190,7 +190,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         LANG=en_US.UTF-8
 
-Guardar presionando Ctrl + X,luego Y y finalmente ENTER
+  *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
 
 35. Ajustar zona horaria:
 
