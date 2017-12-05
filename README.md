@@ -206,7 +206,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         ln -s /usr/share/zoneinfo/<ZONA>/<SUB_ZONA> /etc/localtime
 
-  *donde <ZONA> puede ser America y <SUB_ZONA> puede ser Bogota.*
+  *donde < ZONA > puede ser America y <SUB_ZONA> puede ser Bogota.*
 
 37. Instalar GRUB con:
 
