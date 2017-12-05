@@ -172,7 +172,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         nano /etc/locale.gen
 
-  *Descomentar las líneas de interés quitando el símbolo #, en este caso:*
+  *Descomentar las líneas de interés quitando el símbolo #, en este caso:* 
 
         en_US.UTF-8 UTF-8
 
@@ -244,8 +244,8 @@ Guardar presionando Ctrl + X,luego Y y finalmente ENTER
 
         passwd
 
-  *Ingresar nueva contraseña*
-  *Repetir la contraseña*
+   *Ingresar nueva contraseña*   
+   *Repetir la contraseña*
 
 
 43. Salir de la sesión, desmontar particiones y reiniciar equipo con:
