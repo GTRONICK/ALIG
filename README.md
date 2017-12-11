@@ -233,8 +233,9 @@ El presente documento no pretende ser una guía completa para la instalación de
 
 40. Agregar el hostname a /etc/hosts, donde <myHostName> es el nombre de host escogido e ingresado en /etc/hostname, por ejemplo:
         
-        127.0.0.1        localhost.localdomain        localhost         gtronick
-        ::1                localhost.localdomain        localhost         gtronick
+        127.0.0.1        localhost.localdomain        localhost
+        ::1              localhost.localdomain        localhost
+        127.0.1.1        gtronick.localdomain	      gtronick
 
 41. Instalar paquetes para el controlador WiFi:
 
