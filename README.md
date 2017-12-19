@@ -174,7 +174,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
   *Descomentar las líneas de interés quitando el símbolo #, en este caso:*
 
-    en_US.UTF-8 UTF-8
+        en_US.UTF-8 UTF-8
 
   *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
         
