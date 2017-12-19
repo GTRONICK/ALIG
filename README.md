@@ -172,9 +172,9 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         nano /etc/locale.gen
 
-  *Descomentar las líneas de interés quitando el símbolo #, en este caso:* 
+  *Descomentar las líneas de interés quitando el símbolo #, en este caso:*
 
-        en_US.UTF-8 UTF-8
+      en_US.UTF-8 UTF-8
 
   *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
         
@@ -188,7 +188,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
   *Agregar el siguiente contenido:*
 
-        LANG=en_US.UTF-8
+      LANG=en_US.UTF-8
 
   *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
 
@@ -215,9 +215,9 @@ El presente documento no pretende ser una guía completa para la instalación de
   *Si se reporta un error, que indica que /boot no parece ser una partición EFI, verificar que esté correctamente montada en /mnt/boot. Para hacer esto, escribir exit para acceder a la consola del live system. Luego, ejecutar:*
 
 
-        mkdir -p /mnt/boot
-        mount /dev/sda1 /mnt/boot
-        arch-chroot /mnt/ /bin/bash
+      mkdir -p /mnt/boot
+      mount /dev/sda1 /mnt/boot
+      arch-chroot /mnt/ /bin/bash
 
   *Repetir el comando de instalación grub-install....*
 
@@ -229,7 +229,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
   *Agregar el nombre del host a /etc/hostname, por ejemplo con:*
 
-        echo gtronick > /etc/hostname
+      echo gtronick > /etc/hostname
 
 40. Agregar el hostname a /etc/hosts, donde <myHostName> es el nombre de host escogido e ingresado en /etc/hostname, por ejemplo:
         
