@@ -154,7 +154,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         pacstrap /mnt
 
-  *Esto iniciará la instalación de los paquetes base (191.35 MiB aprox.)*
+    *Esto iniciará la instalación de los paquetes base (191.35 MiB aprox.)*
 
 29. Generar fstab con:
 
@@ -172,11 +172,11 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         nano /etc/locale.gen
 
-  *Descomentar las líneas de interés quitando el símbolo #, en este caso:*
+    *Descomentar las líneas de interés quitando el símbolo #, en este caso:*
 
         en_US.UTF-8 UTF-8
 
-  *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
+    *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
         
 33. Construir el soporte de idioma con: 
 
@@ -186,11 +186,11 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         nano /etc/locale.conf
 
-  *Agregar el siguiente contenido:*
+    *Agregar el siguiente contenido:*
 
       LANG=en_US.UTF-8
 
-  *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
+    *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
 
 35. Ajustar zona horaria:
 
@@ -206,20 +206,20 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         ln -s /usr/share/zoneinfo/<ZONA>/<SUB_ZONA> /etc/localtime
 
-  *donde < ZONA > puede ser America y <SUB_ZONA> puede ser Bogota.*
+    *donde < ZONA > puede ser America y <SUB_ZONA> puede ser Bogota.*
 
 37. Instalar GRUB con:
 
         grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 
-  *Si se reporta un error, que indica que /boot no parece ser una partición EFI, verificar que esté correctamente montada en /mnt/boot. Para hacer esto, escribir exit para acceder a la consola del live system. Luego, ejecutar:*
+    *Si se reporta un error, que indica que /boot no parece ser una partición EFI, verificar que esté correctamente montada en /mnt/boot. Para hacer esto, escribir exit para acceder a la consola del live system. Luego, ejecutar:*
 
 
       mkdir -p /mnt/boot
       mount /dev/sda1 /mnt/boot
       arch-chroot /mnt/ /bin/bash
 
-  *Repetir el comando de instalación grub-install....*
+    *Repetir el comando de instalación grub-install....*
 
 38. Generar archivo de configuración de grub con:
 
@@ -227,7 +227,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
 39. Configuración de red:
 
-  *Agregar el nombre del host a /etc/hostname, por ejemplo con:*
+    *Agregar el nombre del host a /etc/hostname, por ejemplo con:*
 
       echo gtronick > /etc/hostname
 
@@ -245,8 +245,8 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         passwd
 
-   *Ingresar nueva contraseña*   
-   *Repetir la contraseña*
+    *Ingresar nueva contraseña*   
+    *Repetir la contraseña*
 
 
 43. Salir de la sesión, desmontar particiones y reiniciar equipo con:
