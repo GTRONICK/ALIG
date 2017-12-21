@@ -1,12 +1,9 @@
-## ArchLinux_InstallGuide ##
+# INSTALACIÓN DE ARCHLINUX CON SOPORTE UEFI #
 
-**GTRONICK**  
+## **GTRONICK** ##  
 Jaime Quiroga 
  
 Editado por última vez: **05/12/2017**
-
-# INSTALACIÓN DE ARCHLINUX CON SOPORTE UEFI #
-
 
 El presente documento no pretende ser una guía completa para la instalación de ArchLinux. Es una guía rápida para acelerar el proceso de instalación. Para más detalles, consultar la **Wiki** de ArchLinux, y su guía de instalación.
 
