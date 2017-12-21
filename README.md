@@ -229,7 +229,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Agregar el nombre del host a /etc/hostname, por ejemplo con:*
 
-      echo gtronick > /etc/hostname
+        echo gtronick > /etc/hostname
 
 40. Agregar el hostname a /etc/hosts, donde <myHostName> es el nombre de host escogido e ingresado en /etc/hostname, por ejemplo:
         
