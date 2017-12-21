@@ -212,9 +212,9 @@ El presente documento no pretende ser una guía completa para la instalación de
     *Si se reporta un error, que indica que /boot no parece ser una partición EFI, verificar que esté correctamente montada en /mnt/boot. Para hacer esto, escribir exit para acceder a la consola del live system. Luego, ejecutar:*
 
 
-      mkdir -p /mnt/boot
-      mount /dev/sda1 /mnt/boot
-      arch-chroot /mnt/ /bin/bash
+        mkdir -p /mnt/boot
+        mount /dev/sda1 /mnt/boot
+        arch-chroot /mnt/ /bin/bash
 
     *Repetir el comando de instalación grub-install....*
 
