@@ -9,9 +9,12 @@ Jaime Quiroga
 
 Editado por última vez: 22/12/2017
 
-El presente documento no pretende ser una guía completa para la instalación de ArchLinux. Es una guía rápida para acelerar el proceso de instalación. Para más detalles, consultar la Wiki de ArchLinux, y su guía de instalación.
+El presente documento no pretende ser una guía completa para la instalación de ArchLinux. Es una guía rápida para acelerar el 
+proceso de instalación. Para más detalles, consultar la Wiki de ArchLinux, y su guía de instalación.
 
-Configurar la BIOS de tu equipo para permitir el arranque desde un dispositivo USB, y el arranque EFI. Si la instalación se está haciendo en VirtualBox, configurar la máquina virtual para permitir el arranque con EFI. Seleccionar la máquina virtual, propiedades, System, Enable EFI.
+Configurar la BIOS de tu equipo para permitir el arranque desde un dispositivo USB, y el arranque EFI. Si la instalación se está
+haciendo en VirtualBox, configurar la máquina virtual para permitir el arranque con EFI. Seleccionar la máquina virtual,
+propiedades, System, Enable EFI.
 
 Iniciar la máquina y seleccionar el disco de instalación
 
@@ -209,7 +212,8 @@ Instalar GRUB con:
 
     grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 
-Si se reporta un error, que indica que /boot no parece ser una partición EFI, verificar que esté correctamente montada en /mnt/boot. Para hacer esto, escribir exit para acceder a la consola del live system. Luego, ejecutar:
+Si se reporta un error, que indica que /boot no parece ser una partición EFI, verificar que esté correctamente montada en 
+/mnt/boot. Para hacer esto, escribir exit para acceder a la consola del live system. Luego, ejecutar:
 
     mkdir -p /mnt/boot
     mount /dev/sda1 /mnt/boot
