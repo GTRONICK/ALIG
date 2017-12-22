@@ -246,7 +246,7 @@ El presente documento no pretende ser una guía completa para la instalación de
     *Repetir la contraseña*
 
 
-43. Salir de la sesión, desmontar particiones y reiniciar equipo con:
+43. Salir de la sesión, desmontar particiones:
 
         exit
         umount -R /mnt
