@@ -3,7 +3,7 @@
 ## **GTRONICK** ##  
 Jaime Quiroga 
  
-Editado por última vez: **05/12/2017**
+Editado por última vez: **22/12/2017**
 
 El presente documento no pretende ser una guía completa para la instalación de ArchLinux. Es una guía rápida para acelerar el proceso de instalación. Para más detalles, consultar la **Wiki** de ArchLinux, y su guía de instalación.
 
