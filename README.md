@@ -1,5 +1,7 @@
 # INSTALACIÓN DE ARCHLINUX CON SOPORTE UEFI #
 
+Ingrese a https://gtronick.github.io/ALIG/ para ver la versión web.
+
 ## **GTRONICK** ##  
 Jaime Quiroga 
  
