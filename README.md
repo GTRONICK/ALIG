@@ -5,7 +5,7 @@ Ingrese a https://gtronick.github.io/ALIG/ para ver la versión web.
 ## **GTRONICK** ##  
 Jaime Quiroga 
  
-Editado por última vez: **22/12/2017**
+Editado por última vez: **05/04/2018**
 
 El presente documento no pretende ser una guía completa para la instalación de ArchLinux. Es una guía rápida para acelerar el proceso de instalación. Para más detalles, consultar la **Wiki** de ArchLinux, y su guía de instalación.
 
@@ -62,8 +62,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         gdisk /dev/sda
 
-    *Se debe listar "GPT Present" al final de la lista.
-    No presionar nada para permanecer en la entrada de comandos para gdisk*
+    *Se debe listar "GPT Present" al final de la lista.*
 
 13. Crear partición /boot con:
 
@@ -77,26 +76,29 @@ El presente documento no pretende ser una guía completa para la instalación de
 
 14. Crear particion swap con:
 
+        gdisk /dev/sda
         n
         ENTER
         ENTER
-        +1G
+        +2G
         8200
         W
         Y
         
 15. Crear particion / con:
 
+        gdisk /dev/sda
         n
         ENTER
         ENTER
-        +3G
+        +10G
         8304
         W
         Y
 
 16. Crear partición /home con:
 
+        gdisk /dev/sda
         n
         ENTER
         ENTER
@@ -207,40 +209,83 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *donde < ZONA > puede ser America y < SUB_ZONA > puede ser Bogota.*
 
-37. Instalar GRUB con:
+-----------------------------------------------------------------------------------------------------------------------------
+## INSTALACIÓN DEL BOOTLOADER, USAR SOLO UNO DE LOS DOS MOSTRADOS A CONTINUACIÓN: ##
+### SYSTEMD-BOOT (Recomendado): ###
 
+37. Instalar systemd-boot con:
+
+        bootctl --path=/boot install
+
+38. Generar archivo de configuración de systemd-boot con:
+        
+        nano /boot/loader/loader.conf
+
+    Agregar el siguiente contenido:
+
+        default arch
+        timeout 0
+        editor 0
+
+    *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
+
+39. Generar el archivo de la entrada por defecto para systemd-boot:
+
+        echo $(blkid -s PARTUUID -o value /dev/sda3) > /boot/loader/entries/arch.conf
+
+    Esto generará un archivo de nombre arch.conf en la ruta especificada, con un contenido similar a:
+
+        14420948-2cea-4de7-b042-40f67c618660
+
+40. Abrir el archivo generado con:
+
+        nano /boot/loader/entries/arch.conf
+
+    Se debe agregar lo siguiente, de manera que el serial generado, quede después de PARTUUID y antes de rw, como sigue:
+
+        title ArchLinux
+        linux /vmlinuz-linux
+        initrd /initramfs-linux.img
+        options root=PARTUUID=14420948-2cea-4de7-b042-40f67c618660 rw
+
+    *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
+
+## GRUB:
+
+41. Instalar GRUB con:
+        
         grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 
     *Si se reporta un error, que indica que /boot no parece ser una partición EFI, verificar que esté correctamente montada en /mnt/boot. Para hacer esto, escribir exit para acceder a la consola del live system. Luego, ejecutar:*
-
-
+        
         mkdir -p /mnt/boot
         mount /dev/sda1 /mnt/boot
         arch-chroot /mnt/ /bin/bash
 
     *Repetir el comando de instalación grub-install....*
 
-38. Generar archivo de configuración de grub con:
-
+42. Generar archivo de configuración de grub con:
+        
         grub-mkconfig -o /boot/grub/grub.cfg
+-----------------------------------------------------------------------------------------------------------------------------
 
-39. Configuración de red:
+43. Configuración de red:
 
     *Agregar el nombre del host a /etc/hostname, por ejemplo con:*
 
         echo gtronick > /etc/hostname
 
-40. Agregar el hostname a /etc/hosts, donde <myHostName> es el nombre de host escogido e ingresado en /etc/hostname, por ejemplo:
+44. Agregar el hostname a /etc/hosts, donde <myHostName> es el nombre de host escogido e ingresado en /etc/hostname, por ejemplo:
         
         127.0.0.1        localhost.localdomain        localhost
         ::1              localhost.localdomain        localhost
         127.0.1.1        gtronick.localdomain	      gtronick
 
-41. Instalar paquetes para el controlador WiFi:
+45. Instalar paquetes para el controlador WiFi:
 
         pacman -S iw wpa_supplicant dialog
 
-42. Ajustar contraseña para  root, con:
+46. Ajustar contraseña para  root, con:
 
         passwd
 
@@ -248,17 +293,17 @@ El presente documento no pretende ser una guía completa para la instalación de
     *Repetir la contraseña*
 
 
-43. Salir de la sesión, desmontar particiones:
+47. Salir de la sesión, desmontar particiones:
 
         exit
         umount -R /mnt
         umount -R /mnt/boot #si existe o aún está montado
 
-44. Antes de reiniciar, verificar que se hayan desmontado todas las particiones de /dev/sda, con
+48. Antes de reiniciar, verificar que se hayan desmontado todas las particiones de /dev/sda, con
 
         lsblk
 
-45. Por último reiniciar con:
+49. Por último reiniciar con:
 
         reboot
 
