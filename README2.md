@@ -249,7 +249,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
 
-### GRUB:###
+### GRUB: ###
 
 41. Instalar GRUB con:
         
