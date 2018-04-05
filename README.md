@@ -210,8 +210,8 @@ El presente documento no pretende ser una guía completa para la instalación de
     *donde < ZONA > puede ser America y < SUB_ZONA > puede ser Bogota.*
 
 -----------------------------------------------------------------------------------------------------------------------------
-## INSTALACIÓN DEL BOOTLOADER, USAR SOLO UNO DE LOS DOS MOSTRADOS A CONTINUACIÓN: ##
-### SYSTEMD-BOOT (Recomendado): ###
+### INSTALACIÓN DEL BOOTLOADER, USAR SOLO UNO DE LOS DOS MOSTRADOS A CONTINUACIÓN: ###
+#### SYSTEMD-BOOT (Recomendado): ####
 
 37. Instalar systemd-boot con:
 
@@ -250,7 +250,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
 
-## GRUB:
+### GRUB:###
 
 41. Instalar GRUB con:
         
