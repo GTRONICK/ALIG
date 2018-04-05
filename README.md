@@ -208,11 +208,8 @@ El presente documento no pretende ser una guía completa para la instalación de
         ln -s /usr/share/zoneinfo/<ZONA>/<SUB_ZONA> /etc/localtime
 
     *donde < ZONA > puede ser America y < SUB_ZONA > puede ser Bogota.*
-
-**INSTALACIÓN DEL BOOTLOADER, USAR SOLO UNO DE LOS DOS MOSTRADOS A CONTINUACIÓN**
-**SYSTEMD-BOOT (Recomendado)**
-
-37. Instalar systemd-boot con:
+    
+37. Instalar systemd-boot con (Sólo si no se va a usar GRUB):
 
         bootctl --path=/boot install
 
@@ -249,9 +246,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
 
-**GRUB**
-
-41. Instalar GRUB con:
+41. Instalar GRUB (sólo si no instaló systemd-boot) con:
         
         grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 
