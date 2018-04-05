@@ -267,7 +267,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 42. Generar archivo de configuración de grub con:
         
         grub-mkconfig -o /boot/grub/grub.cfg
-
+    
 -----------------------------------------------------------------------------------------------------------------------------
 
 43. Configuración de red:
