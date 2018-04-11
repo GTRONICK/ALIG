@@ -5,9 +5,9 @@ Ingrese a https://gtronick.github.io/ALIG/ para ver la versión web.
 ## **GTRONICK** ##  
 Jaime Quiroga 
  
-Editado por última vez: **05/04/2018**
+Editado por última vez: **11/04/2018**
 
-El presente documento no pretende ser una guía completa para la instalación de ArchLinux. Es una guía rápida para acelerar el proceso de instalación. Para más detalles, consultar la **Wiki** de ArchLinux, y su guía de instalación.
+El presente documento no pretende ser una guía completa para la instalación de ArchLinux. Es una guía rápida para acelerar el proceso de instalación. Para más detalles, consultar la [**Wiki**](https://wiki.archlinux.org/index.php/Installation_guide) de ArchLinux, y su guía de instalación.
 
 
 1. Configurar la BIOS de tu equipo para permitir el arranque desde un dispositivo USB, y el arranque EFI. Si la instalación se está haciendo en VirtualBox, configurar la máquina virtual para permitir el arranque con EFI. Seleccionar la máquina virtual, propiedades, System, Enable EFI.
@@ -25,44 +25,43 @@ El presente documento no pretende ser una guía completa para la instalación de
     *Si se muestra contenido en la carpeta efivars, quiere decir que arrancamos el sistema correctamente en modo UEFI.*
 
 
-5. Verificar conexión a internet haciendo ping a: archlinux.org (o cualquier otra página o IP)
+5. Verificar la conexión a Internet haciendo ping a: archlinux.org (o cualquier otra página o IP)
 
         ping archlinux.org
 
 6. En caso de tener sólo wifi, usar:
-
 
         ip link (Para listar las interfaces. Ubicar la de Wifi, generalmente es wlp2s0)
         wifi-menu -o wlp2s0
 
     *Seleccionar la red, e ingresar contraseña.*
 
-7. Actualizar el reloj del sistema: 
+7. Activar la sincronización del reloj del sistema con Internet: 
 
         timedatectl set-ntp true
 
-8. Verificar con: (opcional)
+8. Verificar: (opcional)
 
         timedatectl status
 
-9. Identificar los discos con: 
+9. Identificar los discos: 
 
         lsblk
 
-10. Crear una nueva tabla de particiones GPT en /dev/sda con:
+10. Crear una nueva tabla de particiones GPT en /dev/sda:
 
         gdisk /dev/sda
 
         w (Para escribir los cambios)
         Y (Para aceptar los cambios)
 
-11. Verificar nuevamente con: 
+11. Verificar nuevamente: 
 
         gdisk /dev/sda
 
     *Se debe listar "GPT Present" al final de la lista.*
 
-12. Crear partición /boot con:
+12. Crear partición /boot :
 
         n (Crea una nueva partición)
         (Dejar número de la partición por defecto, presionando ENTER)
@@ -72,7 +71,7 @@ El presente documento no pretende ser una guía completa para la instalación de
         w (Para escribir los cambios y luego ENTER)
         y (Para aceptar los cambios y luego ENTER)
 
-13. Crear particion swap con:
+13. Crear particion swap :
 
         gdisk /dev/sda
         n
@@ -83,7 +82,7 @@ El presente documento no pretende ser una guía completa para la instalación de
         W
         Y
         
-14. Crear particion / con:
+14. Crear particion / :
 
         gdisk /dev/sda
         n
@@ -94,7 +93,7 @@ El presente documento no pretende ser una guía completa para la instalación de
         W
         Y
 
-15. Crear partición /home con:
+15. Crear partición /home :
 
         gdisk /dev/sda
         n
@@ -105,47 +104,47 @@ El presente documento no pretende ser una guía completa para la instalación de
         W
         Y
 
-16. Verificar con:
+16. Verificar:
 
         lsblk
 
-17. Formatear partición /boot con:
+17. Formatear partición /boot :
 
         mkfs.fat -F32 /dev/sda1
 
-18. Formatear particion swap con:
+18. Formatear particion swap :
 
         mkswap /dev/sda2
 
-19. Activar swap con:
+19. Activar swap :
 
         swapon /dev/sda2
 
-20. Formatear particion / con:
+20. Formatear particion / :
 
         mkfs.ext4 /dev/sda3
 
-21. Formatear partición /home con:
+21. Formatear partición /home :
 
         mkfs.ext4 /dev/sda4
 
-22. Montar particion / en /mnt con:
+22. Montar particion / en /mnt :
         
         mount /dev/sda3 /mnt
 
-23. Crear directorio para /boot con:
+23. Crear directorio para /boot :
 
         mkdir -p /mnt/boot
 
-24. Montar partición /boot con:
+24. Montar partición /boot :
 
         mount /dev/sda1 /mnt/boot
 
-25. Crear directorio para /home con:
+25. Crear directorio para /home :
 
         mkdir -p /mnt/home
 
-26. Montar partición /home con:
+26. Montar partición /home :
 
         mount /dev/sda4 /mnt/home
 
@@ -155,15 +154,15 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Esto iniciará la instalación de los paquetes base (191.35 MiB aprox.)*
 
-28. Generar fstab con:
+28. Generar fstab:
 
         genfstab -U /mnt >> /mnt/etc/fstab
 
-29. Verificar con:
+29. Verificar:
 
         cat /mnt/etc/fstab
 
-30. Iniciar sesión como root en la instalación con:
+30. Iniciar sesión como root en la instalación:
 
         arch-chroot /mnt /bin/bash
 
@@ -177,11 +176,11 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
         
-32. Construir el soporte de idioma con: 
+32. Construir el soporte de idioma: 
 
         locale-gen
 
-33. Crear el archivo de configuración correspondiente con:
+33. Crear el archivo de configuración correspondiente:
 
         nano /etc/locale.conf
 
@@ -211,7 +210,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         bootctl --path=/boot install
 
-37. Generar archivo de configuración de systemd-boot con:
+37. Generar archivo de configuración de systemd-boot:
         
         nano /boot/loader/loader.conf
 
@@ -231,7 +230,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         14420948-2cea-4de7-b042-40f67c618660
 
-39. Abrir el archivo generado con:
+39. Abrir el archivo generado:
 
         nano /boot/loader/entries/arch.conf
 
@@ -244,7 +243,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
 
-40. Instalar GRUB (sólo si no instaló systemd-boot, de lo contrario saltar al paso 43) con:
+40. Instalar GRUB (sólo si no instaló systemd-boot, de lo contrario saltar al paso 43):
         
         grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 
@@ -256,7 +255,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Repetir el comando de instalación grub-install....*
 
-41. Generar archivo de configuración de grub con:
+41. Generar archivo de configuración de grub:
         
         grub-mkconfig -o /boot/grub/grub.cfg
 
@@ -276,7 +275,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         pacman -S iw wpa_supplicant dialog
 
-45. Ajustar contraseña para  root, con:
+45. Ajustar contraseña para  root:
 
         passwd
 
@@ -290,7 +289,7 @@ El presente documento no pretende ser una guía completa para la instalación de
         umount -R /mnt
         umount -R /mnt/boot #si existe o aún está montado
 
-47. Antes de reiniciar, verificar que se hayan desmontado todas las particiones de /dev/sda, con
+47. Antes de reiniciar, verificar que se hayan desmontado todas las particiones de /dev/sda:
 
         lsblk
 
