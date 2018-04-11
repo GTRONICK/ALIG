@@ -18,20 +18,18 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         Arch Linux Arch ISO x86_64 UEFI USB
 
-4. Una vez que ha iniciado, entrar a la wiki (Opcional)
-
-5. Para verificar que estamos en modo UEFI, ejecutar el siguiente comando: 
+4. Para verificar que estamos en modo UEFI, ejecutar el siguiente comando: 
 
         ls /sys/firmware/efi/efivars
 
     *Si se muestra contenido en la carpeta efivars, quiere decir que arrancamos el sistema correctamente en modo UEFI.*
 
 
-6. Verificar conexión a internet haciendo ping a: archlinux.org (o cualquier otra página o IP)
+5. Verificar conexión a internet haciendo ping a: archlinux.org (o cualquier otra página o IP)
 
         ping archlinux.org
 
-7. En caso de tener sólo wifi, usar:
+6. En caso de tener sólo wifi, usar:
 
 
         ip link (Para listar las interfaces. Ubicar la de Wifi, generalmente es wlp2s0)
@@ -39,32 +37,32 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Seleccionar la red, e ingresar contraseña.*
 
-8. Actualizar el reloj del sistema: 
+7. Actualizar el reloj del sistema: 
 
         timedatectl set-ntp true
 
-9. Verificar con: (opcional)
+8. Verificar con: (opcional)
 
         timedatectl status
 
-10. Identificar los discos con: 
+9. Identificar los discos con: 
 
         lsblk
 
-11. Crear una nueva tabla de particiones GPT en /dev/sda con:
+10. Crear una nueva tabla de particiones GPT en /dev/sda con:
 
         gdisk /dev/sda
 
         w (Para escribir los cambios)
         Y (Para aceptar los cambios)
 
-12. Verificar nuevamente con: 
+11. Verificar nuevamente con: 
 
         gdisk /dev/sda
 
     *Se debe listar "GPT Present" al final de la lista.*
 
-13. Crear partición /boot con:
+12. Crear partición /boot con:
 
         n (Crea una nueva partición)
         (Dejar número de la partición por defecto, presionando ENTER)
@@ -74,7 +72,7 @@ El presente documento no pretende ser una guía completa para la instalación de
         w (Para escribir los cambios y luego ENTER)
         y (Para aceptar los cambios y luego ENTER)
 
-14. Crear particion swap con:
+13. Crear particion swap con:
 
         gdisk /dev/sda
         n
@@ -85,7 +83,7 @@ El presente documento no pretende ser una guía completa para la instalación de
         W
         Y
         
-15. Crear particion / con:
+14. Crear particion / con:
 
         gdisk /dev/sda
         n
@@ -96,7 +94,7 @@ El presente documento no pretende ser una guía completa para la instalación de
         W
         Y
 
-16. Crear partición /home con:
+15. Crear partición /home con:
 
         gdisk /dev/sda
         n
@@ -107,69 +105,69 @@ El presente documento no pretende ser una guía completa para la instalación de
         W
         Y
 
-17. Verificar con:
+16. Verificar con:
 
         lsblk
 
-18. Formatear partición /boot con:
+17. Formatear partición /boot con:
 
         mkfs.fat -F32 /dev/sda1
 
-19. Formatear particion swap con:
+18. Formatear particion swap con:
 
         mkswap /dev/sda2
 
-20. Activar swap con:
+19. Activar swap con:
 
         swapon /dev/sda2
 
-21. Formatear particion / con:
+20. Formatear particion / con:
 
         mkfs.ext4 /dev/sda3
 
-22. Formatear partición /home con:
+21. Formatear partición /home con:
 
         mkfs.ext4 /dev/sda4
 
-23. Montar particion / en /mnt con:
+22. Montar particion / en /mnt con:
         
         mount /dev/sda3 /mnt
 
-24. Crear directorio para /boot con:
+23. Crear directorio para /boot con:
 
         mkdir -p /mnt/boot
 
-25. Montar partición /boot con:
+24. Montar partición /boot con:
 
         mount /dev/sda1 /mnt/boot
 
-26. Crear directorio para /home con:
+25. Crear directorio para /home con:
 
         mkdir -p /mnt/home
 
-27. Montar partición /home con:
+26. Montar partición /home con:
 
         mount /dev/sda4 /mnt/home
 
-28. Instalar los paquetes base:
+27. Instalar los paquetes base:
 
         pacstrap /mnt
 
     *Esto iniciará la instalación de los paquetes base (191.35 MiB aprox.)*
 
-29. Generar fstab con:
+28. Generar fstab con:
 
         genfstab -U /mnt >> /mnt/etc/fstab
 
-30. Verificar con:
+29. Verificar con:
 
         cat /mnt/etc/fstab
 
-31. Iniciar sesión como root en la instalación con:
+30. Iniciar sesión como root en la instalación con:
 
         arch-chroot /mnt /bin/bash
 
-32. Generar locales:
+31. Generar locales:
 
         nano /etc/locale.gen
 
@@ -179,11 +177,11 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
         
-33. Construir el soporte de idioma con: 
+32. Construir el soporte de idioma con: 
 
         locale-gen
 
-34. Crear el archivo de configuración correspondiente con:
+33. Crear el archivo de configuración correspondiente con:
 
         nano /etc/locale.conf
 
@@ -193,7 +191,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
 
-35. Ajustar zona horaria:
+34. Ajustar zona horaria:
 
         tzselect
         2 
@@ -203,17 +201,17 @@ El presente documento no pretende ser una guía completa para la instalación de
         1 (Número correspondiente a la subzona)
         ENTER
 
-36. Crear el link simbólico para hacer el cambio permanente:
+35. Crear el link simbólico para hacer el cambio permanente:
 
         ln -s /usr/share/zoneinfo/<ZONA>/<SUB_ZONA> /etc/localtime
 
     *donde < ZONA > puede ser America y < SUB_ZONA > puede ser Bogota.*
     
-37. Instalar systemd-boot con (Sólo si no se va a usar GRUB, de lo contrario saltar al paso 41):
+36. Instalar systemd-boot con (Sólo si no se va a usar GRUB, de lo contrario saltar al paso 41):
 
         bootctl --path=/boot install
 
-38. Generar archivo de configuración de systemd-boot con:
+37. Generar archivo de configuración de systemd-boot con:
         
         nano /boot/loader/loader.conf
 
@@ -225,7 +223,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
 
-39. Generar el archivo de la entrada por defecto para systemd-boot:
+38. Generar el archivo de la entrada por defecto para systemd-boot:
 
         echo $(blkid -s PARTUUID -o value /dev/sda3) > /boot/loader/entries/arch.conf
 
@@ -233,7 +231,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         14420948-2cea-4de7-b042-40f67c618660
 
-40. Abrir el archivo generado con:
+39. Abrir el archivo generado con:
 
         nano /boot/loader/entries/arch.conf
 
@@ -246,7 +244,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
 
-41. Instalar GRUB (sólo si no instaló systemd-boot, de lo contrario saltar al paso 43) con:
+40. Instalar GRUB (sólo si no instaló systemd-boot, de lo contrario saltar al paso 43) con:
         
         grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 
@@ -258,27 +256,27 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Repetir el comando de instalación grub-install....*
 
-42. Generar archivo de configuración de grub con:
+41. Generar archivo de configuración de grub con:
         
         grub-mkconfig -o /boot/grub/grub.cfg
 
-43. Configuración de red:
+42. Configuración de red:
 
     *Agregar el nombre del host a /etc/hostname, por ejemplo con:*
 
         echo gtronick > /etc/hostname
 
-44. Agregar el hostname a /etc/hosts, donde <myHostName> es el nombre de host escogido e ingresado en /etc/hostname, por ejemplo:
+43. Agregar el hostname a /etc/hosts, donde <myHostName> es el nombre de host escogido e ingresado en /etc/hostname, por ejemplo:
         
         127.0.0.1        localhost.localdomain        localhost
         ::1              localhost.localdomain        localhost
         127.0.1.1        gtronick.localdomain	      gtronick
 
-45. Instalar paquetes para el controlador WiFi:
+44. Instalar paquetes para el controlador WiFi:
 
         pacman -S iw wpa_supplicant dialog
 
-46. Ajustar contraseña para  root, con:
+45. Ajustar contraseña para  root, con:
 
         passwd
 
@@ -286,17 +284,17 @@ El presente documento no pretende ser una guía completa para la instalación de
     *Repetir la contraseña*
 
 
-47. Salir de la sesión, desmontar particiones:
+46. Salir de la sesión, desmontar particiones:
 
         exit
         umount -R /mnt
         umount -R /mnt/boot #si existe o aún está montado
 
-48. Antes de reiniciar, verificar que se hayan desmontado todas las particiones de /dev/sda, con
+47. Antes de reiniciar, verificar que se hayan desmontado todas las particiones de /dev/sda, con
 
         lsblk
 
-49. Por último reiniciar con:
+48. Por último reiniciar con:
 
         reboot
 
