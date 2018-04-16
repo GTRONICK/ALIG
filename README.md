@@ -1,11 +1,10 @@
 # INSTALACIÓN DE ARCHLINUX CON SOPORTE UEFI #
-
 Ingrese a https://gtronick.github.io/ALIG/ para ver la versión web.
 
-## **GTRONICK** ##  
-Jaime Quiroga 
- 
-Editado por última vez: **11/04/2018**
+Sitio web: [GTRONICK](http://gtronick.com/) 
+
+Autor: Jaime Quiroga  
+Editado por última vez: **16/04/2018**
 
 El presente documento no pretende ser una guía completa para la instalación de ArchLinux. Es una guía rápida para acelerar el proceso de instalación. Para más detalles, consultar la [**Wiki**](https://wiki.archlinux.org/index.php/Installation_guide) de ArchLinux, y su guía de instalación.
 
