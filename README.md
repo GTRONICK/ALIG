@@ -204,7 +204,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *donde < ZONA > puede ser America y < SUB_ZONA > puede ser Bogota.*
     
-36. Instalar systemd-boot con (Sólo si no se va a usar GRUB, de lo contrario saltar al paso 41):
+36. Instalar **systemd-boot** con (Sólo si no se va a usar GRUB, de lo contrario saltar al paso 40):
 
         bootctl --path=/boot install
 
@@ -241,7 +241,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
 
-40. Instalar GRUB (sólo si no instaló systemd-boot, de lo contrario saltar al paso 43):
+40. Instalar **GRUB** (sólo si no instaló systemd-boot, de lo contrario saltar al paso 43):
         
         grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 
