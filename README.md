@@ -11,7 +11,7 @@ Ingrese a https://gtronick.github.io/ALIG/ para ver la versión web.
 ----
 Sitio web de **GTRONICK**: [http://gtronick.com](http://gtronick.com)    
 Autor: Jaime Quiroga  
-Editado por última vez: **16/04/2018 09:49 AM**
+Editado por última vez: **23/04/2018 08:01 AM**
 
 El presente documento no pretende ser una guía completa para la instalación de ArchLinux. Es una guía rápida para acelerar el proceso de instalación. Para más detalles, consultar la [**Wiki**](https://wiki.archlinux.org/index.php/Installation_guide) de ArchLinux, y su guía de instalación.
 
