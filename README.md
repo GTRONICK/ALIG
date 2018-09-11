@@ -314,8 +314,9 @@ El presente documento no pretende ser una guía completa para la instalación de
 51. Dar permisos de uso para Sudo al nuevo usuario:
 
         visudo
-        Buscar la línea  ROOT  ALL=(ALL) ALL y justo debajo de esta, agregar nuestro usuario, por ejemplo:
+        
+    *Buscar la línea  ROOT  ALL=(ALL) ALL y justo debajo de esta, agregar nuestro usuario, por ejemplo:*
         
         myUser   ALL=(ALL) ALL
         
-       Presionar : (dos puntos) luego q y finalmente ENTER.
+    *Presionar : (dos puntos) luego q y finalmente ENTER.*
