@@ -320,3 +320,5 @@ El presente documento no pretende ser una guía completa para la instalación de
         myUser   ALL=(ALL) ALL
         
     *Presionar : (dos puntos) luego q y finalmente ENTER.*
+    
+Visita mi canal de YouTube para ver la instalación en video y otros tutoriales: (GTRONICK)[https://www.youtube.com/user/GTRONCK]    
