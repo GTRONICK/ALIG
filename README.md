@@ -11,7 +11,7 @@ Ingrese a https://gtronick.github.io/ALIG/ para ver la versión web.
 ----
 Sitio web de **GTRONICK**: [http://gtronick.com](http://gtronick.com)    
 Autor: Jaime Quiroga  
-Editado por última vez: **23/04/2018 08:01 AM**
+Editado por última vez: **11/09/2018 08:43 AM**
 
 El presente documento no pretende ser una guía completa para la instalación de ArchLinux. Es una guía rápida para acelerar el proceso de instalación. Para más detalles, consultar la [**Wiki**](https://wiki.archlinux.org/index.php/Installation_guide) de ArchLinux, y su guía de instalación.
 
@@ -277,9 +277,9 @@ El presente documento no pretende ser una guía completa para la instalación de
         ::1              localhost.localdomain        localhost
         127.0.1.1        gtronick.localdomain	      gtronick
 
-44. Instalar paquetes para el controlador WiFi:
+44. Instalar paquetes para el controlador WiFi y otros paquetes para la postinstalación:
 
-        pacman -S iw wpa_supplicant dialog
+        pacman -S iw wpa_supplicant dialog vim sudo 
 
 45. Ajustar contraseña para  root:
 
@@ -299,7 +299,23 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         lsblk
 
-48. Por último reiniciar con:
+48. Reiniciar con:
 
         reboot
 
+49. Después de reiniciar el equipo con ArchLinux instalado, crear un nuevo usuario, por ejemplo:
+
+        useradd -m myUser
+        
+50. Asignar una contraseña al nuevo usuario creado:
+
+        passwd myUser
+        
+51. Dar permisos de uso para Sudo al nuevo usuario:
+
+        visudo
+        Buscar la línea  ROOT  ALL=(ALL) ALL y justo debajo de esta, agregar nuestro usuario, por ejemplo:
+        
+        myUser   ALL=(ALL) ALL
+        
+       Presionar : (dos puntos) luego q y finalmente ENTER.
