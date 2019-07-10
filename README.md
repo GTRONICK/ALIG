@@ -11,7 +11,7 @@ Ingrese a https://gtronick.github.io/ALIG/ para ver la versión web.
 ----
 Sitio web de **GTRONICK**: [http://gtronick.com](http://gtronick.com)    
 Autor: Jaime Quiroga  
-Editado por última vez: **11/09/2018 08:43 AM**
+Editado por última vez: **10/07/2019 07:08 AM**
 
 El presente documento no pretende ser una guía completa para la instalación de ArchLinux. Es una guía rápida para acelerar el proceso de instalación. Para más detalles, consultar la [**Wiki**](https://wiki.archlinux.org/index.php/Installation_guide) de ArchLinux, y su guía de instalación.
 
@@ -24,50 +24,58 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         Arch Linux Arch ISO x86_64 UEFI USB
 
-4. Para verificar que estamos en modo UEFI, ejecutar el siguiente comando: 
+4. Cuando termine de iniciar, cargar la distribución de teclado correspondiente. Por defecto, la distribución es US (Inglés). Para listar las distribuciones de teclado disponibles usar:
+
+        ls /usr/share/kbd/keymaps/**/*.map.gz
+        
+   *Si se desea cargar la distribución para un teclado en español por ejemplo, usar:*
+   
+        loadkeys es
+        
+5. Para verificar que estamos en modo UEFI, ejecutar el siguiente comando: 
 
         ls /sys/firmware/efi/efivars
 
     *Si se muestra contenido en la carpeta efivars, quiere decir que arrancamos el sistema correctamente en modo UEFI.*
 
 
-5. Verificar la conexión a Internet haciendo ping a: archlinux.org (o cualquier otra página o IP)
+6. Verificar la conexión a Internet haciendo ping a: archlinux.org (o cualquier otra página o IP)
 
         ping archlinux.org
 
-6. En caso de tener sólo wifi, usar:
+7. En caso de tener sólo wifi, usar:
 
         ip link (Para listar las interfaces. Ubicar la de Wifi, generalmente es wlp2s0)
         wifi-menu -o wlp2s0
 
     *Seleccionar la red, e ingresar contraseña.*
 
-7. Activar la sincronización del reloj del sistema con Internet: 
+8. Activar la sincronización del reloj del sistema con Internet: 
 
         timedatectl set-ntp true
 
-8. Verificar: (opcional)
+9. Verificar: (opcional)
 
         timedatectl status
 
-9. Identificar los discos: 
+10. Identificar los discos: 
 
         lsblk
 
-10. Crear una nueva tabla de particiones GPT en /dev/sda:
+11. Crear una nueva tabla de particiones GPT en /dev/sda:
 
         gdisk /dev/sda
 
         w (Para escribir los cambios)
         Y (Para aceptar los cambios)
 
-11. Verificar nuevamente: 
+12. Verificar nuevamente: 
 
         gdisk /dev/sda
 
     *Se debe listar "GPT Present" al final de la lista.*
 
-12. Crear partición /boot :
+13. Crear partición /boot :
 
         n (Crea una nueva partición)
         (Dejar número de la partición por defecto, presionando ENTER)
@@ -77,7 +85,7 @@ El presente documento no pretende ser una guía completa para la instalación de
         w (Para escribir los cambios y luego ENTER)
         y (Para aceptar los cambios y luego ENTER)
 
-13. Crear particion swap :
+14. Crear particion swap :
 
         gdisk /dev/sda
         n
@@ -88,7 +96,7 @@ El presente documento no pretende ser una guía completa para la instalación de
         W
         Y
         
-14. Crear particion / :
+15. Crear particion / :
 
         gdisk /dev/sda
         n
@@ -99,7 +107,7 @@ El presente documento no pretende ser una guía completa para la instalación de
         W
         Y
 
-15. Crear partición /home :
+16. Crear partición /home :
 
         gdisk /dev/sda
         n
@@ -110,69 +118,69 @@ El presente documento no pretende ser una guía completa para la instalación de
         W
         Y
 
-16. Verificar:
+17. Verificar:
 
         lsblk
 
-17. Formatear partición /boot :
+18. Formatear partición /boot :
 
         mkfs.fat -F32 /dev/sda1
 
-18. Formatear particion swap :
+19. Formatear particion swap :
 
         mkswap /dev/sda2
 
-19. Activar swap :
+20. Activar swap :
 
         swapon /dev/sda2
 
-20. Formatear particion / :
+21. Formatear particion / :
 
         mkfs.ext4 /dev/sda3
 
-21. Formatear partición /home :
+22. Formatear partición /home :
 
         mkfs.ext4 /dev/sda4
 
-22. Montar particion / en /mnt :
+23. Montar particion / en /mnt :
         
         mount /dev/sda3 /mnt
 
-23. Crear directorio para /boot :
+24. Crear directorio para /boot :
 
         mkdir -p /mnt/boot
 
-24. Montar partición /boot :
+25. Montar partición /boot :
 
         mount /dev/sda1 /mnt/boot
 
-25. Crear directorio para /home :
+26. Crear directorio para /home :
 
         mkdir -p /mnt/home
 
-26. Montar partición /home :
+27. Montar partición /home :
 
         mount /dev/sda4 /mnt/home
 
-27. Instalar los paquetes base:
+28. Instalar los paquetes base:
 
         pacstrap /mnt
 
     *Esto iniciará la instalación de los paquetes base (191.35 MiB aprox.)*
 
-28. Generar fstab:
+29. Generar fstab:
 
         genfstab -U /mnt >> /mnt/etc/fstab
 
-29. Verificar:
+30. Verificar:
 
         cat /mnt/etc/fstab
 
-30. Iniciar sesión como root en la instalación:
+31. Iniciar sesión como root en la instalación:
 
         arch-chroot /mnt /bin/bash
 
-31. Generar locales:
+32. Generar locales:
 
         nano /etc/locale.gen
 
@@ -182,11 +190,11 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
         
-32. Construir el soporte de idioma: 
+33. Construir el soporte de idioma: 
 
         locale-gen
 
-33. Crear el archivo de configuración correspondiente:
+34. Crear el archivo de configuración correspondiente:
 
         nano /etc/locale.conf
 
@@ -196,7 +204,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
 
-34. Ajustar zona horaria:
+35. Ajustar zona horaria, en este ejemplo se usa America/Bogotá:
 
         tzselect
         2 
@@ -206,17 +214,18 @@ El presente documento no pretende ser una guía completa para la instalación de
         1 (Número correspondiente a la subzona)
         ENTER
 
-35. Crear el link simbólico para hacer el cambio permanente:
+36. Borrar el archivo de configuración anterior y crear el link simbólico para hacer el cambio permanente:
 
+        rm /etc/localtime
         ln -s /usr/share/zoneinfo/<ZONA>/<SUB_ZONA> /etc/localtime
 
     *donde < ZONA > puede ser America y < SUB_ZONA > puede ser Bogota.*
     
-36. Instalar **systemd-boot** (Sólo si no se va a usar GRUB, de lo contrario saltar al paso **40**):
+37. Instalar **systemd-boot** (Sólo si no se va a usar GRUB, de lo contrario saltar al paso **40**):
 
         bootctl --path=/boot install
 
-37. Generar archivo de configuración de systemd-boot:
+38. Generar archivo de configuración de systemd-boot:
         
         nano /boot/loader/loader.conf
 
@@ -228,7 +237,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
 
-38. Generar el archivo de la entrada por defecto para systemd-boot:
+39. Generar el archivo de la entrada por defecto para systemd-boot:
 
         echo $(blkid -s PARTUUID -o value /dev/sda3) > /boot/loader/entries/arch.conf
 
@@ -236,7 +245,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         14420948-2cea-4de7-b042-40f67c618660
 
-39. Abrir el archivo generado:
+40. Abrir el archivo generado:
 
         nano /boot/loader/entries/arch.conf
 
@@ -249,7 +258,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
 
-40. Instalar **GRUB** (sólo si no instaló systemd-boot, de lo contrario saltar al paso **42**):
+41. Instalar **GRUB** (sólo si no instaló systemd-boot, de lo contrario saltar al paso **42**):
         
         grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 
@@ -261,27 +270,27 @@ El presente documento no pretende ser una guía completa para la instalación de
 
     *Repetir el comando de instalación grub-install....*
 
-41. Generar archivo de configuración de grub:
+42. Generar archivo de configuración de grub:
         
         grub-mkconfig -o /boot/grub/grub.cfg
 
-42. Configuración de red:
+43. Configuración de red:
 
     *Agregar el nombre del host a /etc/hostname, por ejemplo con:*
 
         echo gtronick > /etc/hostname
 
-43. Agregar el hostname a /etc/hosts, por ejemplo:
+44. Agregar el hostname a /etc/hosts, por ejemplo:
         
         127.0.0.1        localhost.localdomain        localhost
         ::1              localhost.localdomain        localhost
         127.0.1.1        gtronick.localdomain	      gtronick
 
-44. Instalar paquetes para el controlador WiFi y otros paquetes para la postinstalación:
+45. Instalar paquetes para el controlador WiFi y otros paquetes para la postinstalación:
 
-        pacman -S iw wpa_supplicant dialog vim sudo 
+        pacman -S iw wpa_supplicant dialog vim sudo elinks
 
-45. Ajustar contraseña para  root:
+46. Ajustar contraseña para  root:
 
         passwd
 
@@ -289,36 +298,48 @@ El presente documento no pretende ser una guía completa para la instalación de
     *Repetir la contraseña*
 
 
-46. Salir de la sesión, desmontar particiones:
+47. Salir de la sesión, desmontar particiones:
 
         exit
         umount -R /mnt
         umount -R /mnt/boot #si existe o aún está montado
 
-47. Antes de reiniciar, verificar que se hayan desmontado todas las particiones de /dev/sda:
+48. Antes de reiniciar, verificar que se hayan desmontado todas las particiones de /dev/sda:
 
         lsblk
 
-48. Reiniciar con:
+49. Reiniciar con:
 
         reboot
 
-49. Después de reiniciar el equipo con ArchLinux instalado, crear un nuevo usuario, por ejemplo:
+50. Después de reiniciar el equipo con ArchLinux instalado, crear un nuevo usuario, por ejemplo:
 
         useradd -m myUser
         
-50. Asignar una contraseña al nuevo usuario creado:
+51. Asignar una contraseña al nuevo usuario creado:
 
         passwd myUser
         
-51. Dar permisos de uso para Sudo al nuevo usuario:
+52. Dar permisos de uso para Sudo al nuevo usuario:
 
         visudo
         
     *Buscar la línea  ROOT  ALL=(ALL) ALL y justo debajo de esta, agregar nuestro usuario, por ejemplo:*
         
         myUser   ALL=(ALL) ALL
+    
+    *Para editar el documento, presionar la tecla i. Después de esto ya podremos agregar texto normalmente.*
+    *Para guardar los cambios, presionar ESC, luego escribir :wq y finalmente ENTER.*
+    
+53. Probar la conexión de red con:
+
+        ping www.archlinux.org
         
-    *Presionar : (dos puntos) luego q y finalmente ENTER.*
+54. Si se presenta error, habilitar e iniciar el servicio de dhcpcd:
+
+        sudo systemctl enable dhcpcd.service
+        sudo systemctl start dhcpcd.service
+        
+     *Se debe tener en cuenta que, si se va a instalar un entorno gráfico, después de instalado se debe deshabilitar el servicio de dhcpcd para poder hacer uso de un administrador de red con interfaz gráfica como NetworkManager*
     
 Visita mi canal de YouTube para ver la instalación en video y otros tutoriales: [GTRONICK](https://www.youtube.com/user/GTRONICK)
