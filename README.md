@@ -11,7 +11,7 @@ Ingrese a https://gtronick.github.io/ALIG/ para ver la versión web.
 ----
 Sitio web de **GTRONICK**: [http://gtronick.com](http://gtronick.com)    
 Autor: Jaime Quiroga  
-Editado por última vez: **10/07/2019 07:08 AM**
+Editado por última vez: **02/11/2019 21:12 AM**
 
 El presente documento no pretende ser una guía completa para la instalación de ArchLinux. Es una guía rápida para acelerar el proceso de instalación. Para más detalles, consultar la [**Wiki**](https://wiki.archlinux.org/index.php/Installation_guide) de ArchLinux, y su guía de instalación.
 
@@ -164,7 +164,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
 28. Instalar los paquetes base:
 
-        pacstrap /mnt
+        pacstrap /mnt base linux linux-firmware
 
     *Esto iniciará la instalación de los paquetes base (191.35 MiB aprox.)*
 
