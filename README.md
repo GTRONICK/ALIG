@@ -11,7 +11,7 @@ Ingrese a https://gtronick.github.io/ALIG/ para ver la versión web.
 ----
 Sitio web de **GTRONICK**: [http://gtronick.com](http://gtronick.com)    
 Autor: Jaime Quiroga  
-Editado por última vez: **02/11/2019 21:12 AM**
+Editado por última vez: **07/05/2020 10:15 AM**
 
 El presente documento no pretende ser una guía completa para la instalación de ArchLinux. Es una guía rápida para acelerar el proceso de instalación. Para más detalles, consultar la [**Wiki**](https://wiki.archlinux.org/index.php/Installation_guide) de ArchLinux, y su guía de instalación.
 
@@ -45,8 +45,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
 7. En caso de tener sólo wifi, usar:
 
-        ip link (Para listar las interfaces. Ubicar la de Wifi, generalmente es wlp2s0)
-        wifi-menu -o wlp2s0
+        wifi-menu
 
     *Seleccionar la red, e ingresar contraseña.*
 
@@ -164,9 +163,9 @@ El presente documento no pretende ser una guía completa para la instalación de
 
 28. Instalar los paquetes base:
 
-        pacstrap /mnt base linux linux-firmware
+        pacstrap /mnt base base-devel nano linux linux-firmware
 
-    *Esto iniciará la instalación de los paquetes base (191.35 MiB aprox.)*
+    *Esto iniciará la instalación de los paquetes base (250 MiB aprox.) si se tiene CPU Intel, es recomendable instalar intel-ucode*
 
 29. Generar fstab:
 
@@ -253,12 +252,14 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         title ArchLinux
         linux /vmlinuz-linux
+        initrd /intel-ucode.img 
         initrd /initramfs-linux.img
         options root=PARTUUID=14420948-2cea-4de7-b042-40f67c618660 rw
 
+    **La línea: initrd /intel-ucode.img, sólo se debe poner cuando se ha instalado intel-ucode en el paso 28! **
     *Guardar presionando Ctrl + X, luego Y y finalmente ENTER*
 
-41. Instalar **GRUB** (sólo si no instaló systemd-boot, de lo contrario saltar al paso **42**):
+41. Instalar **GRUB** (sólo si no instaló systemd-boot, de lo contrario saltar al paso **43**):
         
         grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 
@@ -288,7 +289,7 @@ El presente documento no pretende ser una guía completa para la instalación de
 
 45. Instalar paquetes para el controlador WiFi y otros paquetes para la postinstalación:
 
-        pacman -S iw wpa_supplicant dialog vim sudo elinks
+        pacman -S iw wpa_supplicant dialog vi vim sudo elinks
 
 46. Ajustar contraseña para  root:
 
@@ -335,11 +336,24 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         ping www.archlinux.org
         
-54. Si se presenta error, habilitar e iniciar el servicio de dhcpcd:
+54. Si sólo se dispone de WiFi, y se genera error al intentar conectar a la red con wifi-menu, verifique que la interfaz se encuentra abajo, puede usar:
 
-        sudo systemctl enable dhcpcd.service
-        sudo systemctl start dhcpcd.service
+        ip link set <interface> down
         
-     *Se debe tener en cuenta que, si se va a instalar un entorno gráfico, después de instalado se debe deshabilitar el servicio de dhcpcd para poder hacer uso de un administrador de red con interfaz gráfica como NetworkManager*
-    
+ *donde < interface > puede ser por ejemplo wlp2s0, lo que quedaría como: ip link set wlp2s0 down, después de esto, intente nuevamente conectarse con wifi-menu*
+
+Finalmente, como sugerencia adicional, se recomienda instalar los siguientes paquetes cuando se haya reiniciado el sistema:
+
+*>> Para montaje de discos NTFS y otros:*
+gvfs 
+gvfs-nfs 
+ntfs-3g
+
+*>> Para manejo de adb en dispositivos Android:*
+adb
+
+*>> Para clonado de repositorios y otros paquetes del AUR:*
+git
+
+
 Visita mi canal de YouTube para ver la instalación en video y otros tutoriales: [GTRONICK](https://www.youtube.com/user/GTRONICK)
