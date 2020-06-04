@@ -11,7 +11,7 @@ Ingrese a https://gtronick.github.io/ALIG/ para ver la versión web.
 ----
 Sitio web de **GTRONICK**: [http://gtronick.com](http://gtronick.com)    
 Autor: Jaime Quiroga  
-Editado por última vez: **07/05/2020 10:15 AM**
+Editado por última vez: **03/06/2020 21:33**
 
 El presente documento no pretende ser una guía completa para la instalación de ArchLinux. Es una guía rápida para acelerar el proceso de instalación. Para más detalles, consultar la [**Wiki**](https://wiki.archlinux.org/index.php/Installation_guide) de ArchLinux, y su guía de instalación.
 
@@ -336,11 +336,23 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         ping www.archlinux.org
         
-54. Si sólo se dispone de WiFi, y se genera error al intentar conectar a la red con wifi-menu, verifique que la interfaz se encuentra abajo, puede usar:
+54. Si sólo se dispone de WiFi, y se genera error al intentar conectar a la red con wifi-menu, verifique que la interfaz se encuentra abajo e intente nuevamente, puede usar:
 
         ip link set <interface> down
         
  *donde < interface > puede ser por ejemplo wlp2s0, lo que quedaría como: ip link set wlp2s0 down, después de esto, intente nuevamente conectarse con wifi-menu*
+ 
+55. En caso de instalar una interfaz gráfica como Plasma (KDE), es necesario deshabilitar las conexiones realizadas con wifi-menu y desinstalar dhcpcd junto con openresolv y netctl, ya que Plasma cuenta con networkmanager, el cual se encargará de toda la configuración automáticamente. Para esto usamos:
+
+        sudo pacman -Rs netctl dhcpcd
+        
+    *Aceptamos la desinstalación* 
+
+56. En caso de haber instalado ya la interfaz gráfica con Plasma, es necesario activar el servicio de NetworkManager para poder conectarnos a Internet con:
+
+        sudo systemctl enable NetworkManager.service && sudo systemctl start NetworkManager.service
+        
+    *Esto ya debería activar automáticamente el applet de conexiones de KDE, y nos permitirá ver las conexiones de red disponibles* 
 
 Finalmente, como sugerencia adicional, se recomienda instalar los siguientes paquetes cuando se haya reiniciado el sistema:
 
