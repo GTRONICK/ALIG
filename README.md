@@ -43,11 +43,29 @@ El presente documento no pretende ser una guía completa para la instalación de
 
         ping archlinux.org
 
-7. En caso de tener sólo wifi, usar:
+7. En caso de tener sólo wifi, usar [iwctl](https://wiki.archlinux.org/index.php/Iwd#iwctl):
 
-        wifi-menu
+        iwctl
+    
+    Listar los dispositivos:
+    
+        device list
+        
+    Escanear redes:
+    
+        station <dispositivo> scan
+        
+    Listar redes disponibles:
+        
+        station <dispositivo> get-networks
+     
+    Conectarse a una red:
+    
+        station <dispositivo> connect <SSID>
 
-    *Seleccionar la red, e ingresar contraseña.*
+    Salir de iwctl:
+    
+        exit
 
 8. Activar la sincronización del reloj del sistema con Internet: 
 
