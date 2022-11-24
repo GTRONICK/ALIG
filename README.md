@@ -307,7 +307,11 @@ El presente documento no pretende ser una guía completa para la instalación de
 
 45. Instalar paquetes para el controlador WiFi y otros paquetes para la postinstalación:
 
-        pacman -S iw wpa_supplicant dialog vi vim sudo elinks
+        pacman -S vi vim sudo elinks
+        
+        *Si vas a usar Plasma como entorno de escritorio, te recomiendo instalar:*
+        
+        plasma, networkmanager, dnsmasq, sddm
 
 46. Ajustar contraseña para  root:
 
@@ -381,6 +385,7 @@ ntfs-3g
 
 *>> Para manejo de adb en dispositivos Android:*
 adb
+android-tools
 
 *>> Para clonado de repositorios y otros paquetes del AUR:*
 git
