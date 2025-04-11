@@ -1,4 +1,7 @@
 # INSTALACIÓN DE ARCHLINUX CON SOPORTE UEFI #
+
+Para ver la versión interactiva (compatible con móviles) ingrese a: https://gtronick.github.io/arch
+
 Ingrese a https://gtronick.github.io/ALIG/ para ver la versión web.
 
 ----
